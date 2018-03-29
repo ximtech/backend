@@ -16,6 +16,6 @@ Information in wikipedia: https://en.wikipedia.org/wiki/ISO_4217#Active_codes
 
 ![alt text](http://img.brothersoft.com/screenshots/softimage/h/h2_database_engine-328487-1263364219.jpeg)
 
-8. Start backend: output -> backend -> open cmd in current folder -> enter: java –jar rest-1.0.jar (Tomcat will start on localhost:8090)
+8. Start backend: output -> backend -> open cmd in current folder -> enter: java –jar backend-1.0.jar (Tomcat will start on localhost:8090)
 9. Start frontend: output -> frontend -> open cmd in current folder -> enter: java –jar frontend-1.0.jar (Tomcat will start on localhost:8080)
 10. Open browser and go to localhost:8080
