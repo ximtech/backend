@@ -5,7 +5,6 @@ import javax.persistence.PersistenceContext;
 
 import errors.CurrencyNotFoundException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.transaction.annotation.Transactional;
 import repository.entities.Currency;
 

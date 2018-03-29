@@ -21,4 +21,17 @@ public class CurrencyRequest implements Serializable {
     public void setClientIP(String clientIP) {
         this.clientIP = clientIP;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("CurrencyRequest = [");
+        builder.append(" currencyCode = ");
+        builder.append(currencyCode);
+        builder.append(",  clientIP = ");
+        builder.append(clientIP);
+        builder.append(']');
+        builder.append(super.toString());
+        return builder.toString();
+    }
 }
