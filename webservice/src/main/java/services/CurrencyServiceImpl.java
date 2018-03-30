@@ -54,7 +54,6 @@ public class CurrencyServiceImpl implements CurrencyService {
             } catch (Exception e) {
                 LOGGER.info("Exception trying to get currency " + e.getMessage());
                 response.setCurrencyCode(request.getCurrencyCode());
-                response.setRequestDateAndTime(new Date());
                 response.setErrorMessage(e.getMessage());
             }
 
@@ -75,7 +74,6 @@ public class CurrencyServiceImpl implements CurrencyService {
         response.setCurrencyNum(currency.getNum());
         response.setCurrencyE(currency.getE());
         response.setCurrencyFullName(currency.getCurrency());
-        response.setRequestDateAndTime(new Date());
         response.setErrorMessage(SUCCESS);
     }
 

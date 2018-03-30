@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import dto.CurrencyRequest;
 import dto.CurrencyResponse;
 import org.apache.log4j.Logger;
@@ -31,6 +33,8 @@ public class MainController {
         LOGGER.info("Sending response.");
         CurrencyResponse response = currencyService.getCurrencyDataByCode(request);
         clientService.persistClientData(response);
+        List<List<String>> logList = clientService.getAllClientDataFromDB();
+        response.setLogList(logList);
         return response;
     }
 

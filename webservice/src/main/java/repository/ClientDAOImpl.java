@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -31,7 +33,7 @@ public class ClientDAOImpl implements ClientDAO {
         try {
             log = entityManager.find(Log.class, id);
         } catch (Exception e) {
-            throw new LogEntryNotFoundException("Client information with id: " + id + " is not exist");
+            throw new LogEntryNotFoundException("Client information with id: " + id + " wasn't exist");
         }
         return log;
     }
@@ -43,9 +45,15 @@ public class ClientDAOImpl implements ClientDAO {
             log = (Log) entityManager.createQuery("SELECT l FROM Log l WHERE l.code LIKE ?")
                             .setParameter(1, code).getSingleResult();
         } catch (Exception e) {
-            throw new LogEntryNotFoundException("Client information with code: " + code + " is not exist");
+            throw new LogEntryNotFoundException("Client information with code: " + code + " wasn't exist");
         }
         return log;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Log> getAllLogEntries() {
+        return entityManager.createQuery("SELECT l FROM Log l").getResultList();
     }
 
     @Override

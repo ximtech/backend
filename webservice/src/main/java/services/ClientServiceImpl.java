@@ -1,5 +1,8 @@
 package services;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dto.CurrencyResponse;
@@ -25,7 +28,7 @@ public class ClientServiceImpl implements ClientService {
     public void persistClientData(CurrencyResponse response) {
         Log log = new Log();
         log.setCurrencyCode(response.getCurrencyCode());
-        log.setRequestDateTime(response.getRequestDateAndTime());
+        log.setRequestDateTime(new Date());
         log.setClientIP(response.getClientIP());
         log.setErrorrDescription(response.getErrorMessage());
 
@@ -39,7 +42,23 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<List<String>> getAllClientDataFromDB() {
-        return null;    //TODO implement batch get
+        List<Log> listOfLogs = clientDAO.getAllLogEntries();
+        return convertLogList(listOfLogs);
+    }
+
+    private List<List<String>> convertLogList(List<Log> logList) {
+        List<List<String>> result = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        for (Log log : logList) {
+            List<String> list = new ArrayList<>();
+            list.add(log.getCurrencyCode());
+            list.add(log.getClientIP());
+            list.add(log.getErrorrDescription());
+            list.add(dateFormat.format(log.getRequestDateTime()));
+            result.add(list);
+        }
+        return result;
     }
 
     @Autowired

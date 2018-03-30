@@ -2,6 +2,7 @@ package dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,10 +15,7 @@ public class CurrencyResponse implements Serializable {
     private String currencyNum;
     private String currencyE;
     private String currencyFullName;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    private Date requestDateAndTime;
-
+    private List<List<String>> logList;
     private String clientIP;
     private String errorMessage;
 
@@ -56,11 +54,11 @@ public class CurrencyResponse implements Serializable {
         this.errorMessage = errorMessage;
     }
 
-    public Date getRequestDateAndTime() {
-        return requestDateAndTime;
+    public List<List<String>> getLogList() {
+        return logList;
     }
-    public void setRequestDateAndTime(Date requestDateAndTime) {
-        this.requestDateAndTime = requestDateAndTime;
+    public void setLogList(List<List<String>> logList) {
+        this.logList = logList;
     }
 
     public String getClientIP() {
@@ -82,8 +80,8 @@ public class CurrencyResponse implements Serializable {
         builder.append(currencyE);
         builder.append(",  currencyFullName = ");
         builder.append(currencyFullName);
-        builder.append(",  requestDateAndTime = ");
-        builder.append(requestDateAndTime);
+        builder.append(",  logList = ");
+        builder.append(logList);
         builder.append(",  clientIP = ");
         builder.append(clientIP);
         builder.append(",  errorMessage = ");

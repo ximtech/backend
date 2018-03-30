@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 import repository.entities.Log;
 
@@ -13,6 +15,8 @@ public interface ClientDAO {
     Log findById(Long id);
 
     Log findByCode(String code);
+
+    List<Log> getAllLogEntries();
 
     void delete(Log log);
 
