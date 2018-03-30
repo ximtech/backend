@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import dto.CurrencyResponse;
+import dto.LogDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,24 +44,24 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public List<List<String>> getAllClientDataFromDB() {
+    public List<LogDTO> getAllClientDataFromDB() {
         List<Log> listOfLogs = clientDAO.getAllLogEntries();
         return convertLogList(listOfLogs);
     }
 
-    private List<List<String>> convertLogList(List<Log> logList) {
-        List<List<String>> result = new ArrayList<>();
+    private List<LogDTO> convertLogList(List<Log> logList) {
+        List<LogDTO> result = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
         for (Log log : logList) {
-            List<String> list = new ArrayList<>();
-            list.add(log.getCurrencyCode());
-            list.add(log.getClientIP());
-            list.add(log.getErrorDescription());
-            list.add(dateFormat.format(log.getRequestDate()));
-            list.add(timeFormat.format(log.getRequestTime()));
-            result.add(list);
+            LogDTO dto = new LogDTO();
+            dto.setCurrencyCode(log.getCurrencyCode());
+            dto.setClientIP(log.getClientIP());
+            dto.setErrorDescription(log.getErrorDescription());
+            dto.setRequestDate(dateFormat.format(log.getRequestDate()));
+            dto.setRequestTime(timeFormat.format(log.getRequestTime()));
+            result.add(dto);
         }
         return result;
     }

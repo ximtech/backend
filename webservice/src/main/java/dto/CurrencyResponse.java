@@ -1,10 +1,8 @@
 package dto;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -15,7 +13,7 @@ public class CurrencyResponse implements Serializable {
     private String currencyNum;
     private String currencyE;
     private String currencyFullName;
-    private List<List<String>> logList;
+    private List<LogDTO> logList;
     private String clientIP;
     private String errorMessage;
 
@@ -54,10 +52,10 @@ public class CurrencyResponse implements Serializable {
         this.errorMessage = errorMessage;
     }
 
-    public List<List<String>> getLogList() {
+    public List<LogDTO> getLogList() {
         return logList;
     }
-    public void setLogList(List<List<String>> logList) {
+    public void setLogList(List<LogDTO> logList) {
         this.logList = logList;
     }
 

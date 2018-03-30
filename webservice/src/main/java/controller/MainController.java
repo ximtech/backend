@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.CurrencyRequest;
 import dto.CurrencyResponse;
+import dto.LogDTO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,7 @@ public class MainController {
         LOGGER.info("Sending response.");
         CurrencyResponse response = currencyService.getCurrencyDataByCode(request);
         clientService.persistClientData(response);
-        List<List<String>> logList = clientService.getAllClientDataFromDB();
+        List<LogDTO> logList = clientService.getAllClientDataFromDB();
         response.setLogList(logList);
         return response;
     }
