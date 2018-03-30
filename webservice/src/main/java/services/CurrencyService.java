@@ -12,6 +12,4 @@ public interface CurrencyService {
     void getDataFromWikiPage();
 
     CurrencyResponse getCurrencyDataByCode(CurrencyRequest request);
-
-    void persistClientData(CurrencyResponse response);
 }

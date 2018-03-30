@@ -21,14 +21,12 @@ public class CurrencyServiceImpl implements CurrencyService {
     private static final Logger LOGGER = Logger.getLogger(CurrencyServiceImpl.class);
 
     private CurrencyDAO currencyDAO;
-    private ClientDAO clientDAO;
     private WikiPageService pageParser;
 
     @Override
     public void performCleanUp() {
-        LOGGER.info("Performing DB cleanup");
+        LOGGER.info("Performing Currency Table cleanup");
         currencyDAO.clear();
-        clientDAO.clear();
     }
 
     @Override
@@ -63,22 +61,6 @@ public class CurrencyServiceImpl implements CurrencyService {
         return response;
     }
 
-    @Override
-    public void persistClientData(CurrencyResponse response) {
-        Log log = new Log();
-        log.setCurrencyCode(response.getCurrencyCode());
-        log.setRequestDateTime(response.getRequestDateAndTime());
-        log.setClientIP(response.getClientIP());
-        log.setErrorrDescription(response.getErrorMessage());
-
-        try {
-            clientDAO.save(log);
-        } catch (Exception e) {
-            LOGGER.info("Exception trying to save client log to DB " + e.getMessage());
-            response.setErrorMessage(e.getMessage());
-        }
-    }
-
     private void validateCurrencyCode(String code) {
         if (code == null || code.isEmpty()) {
             throw new ValidationException("Currency Code can't be empty");
@@ -100,11 +82,6 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Autowired
     public void setCurrencyDAO(CurrencyDAO currencyDAO) {
         this.currencyDAO = currencyDAO;
-    }
-
-    @Autowired
-    public void setClientDAO(ClientDAO clientDAO) {
-        this.clientDAO = clientDAO;
     }
 
     @Autowired

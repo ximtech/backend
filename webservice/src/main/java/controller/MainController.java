@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import services.ClientService;
 import services.CurrencyService;
 
 @Component
@@ -20,13 +21,16 @@ public class MainController {
     @Autowired
     private CurrencyService currencyService;
 
+    @Autowired
+     private ClientService clientService;
+
     private CurrencyRequest request;
 
     @RequestMapping(method = RequestMethod.GET)
     public CurrencyResponse getPhoneNumberMetadata() {
         LOGGER.info("Sending response.");
         CurrencyResponse response = currencyService.getCurrencyDataByCode(request);
-        currencyService.persistClientData(response);
+        clientService.persistClientData(response);
         return response;
     }
 

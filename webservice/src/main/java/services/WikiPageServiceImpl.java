@@ -38,13 +38,13 @@ public class WikiPageServiceImpl implements WikiPageService {
         }
     }
 
-    private void removeAllInvalidChars(List<String> smallList) {
-        for (int i = 0; i < smallList.size(); i++) {
-            if (smallList.get(i).matches("\\w+\\*?\\[+\\d+\\]+")) {
-                smallList.set(i, smallList.get(i).replaceAll("\\*?\\[+\\d+\\]+", ""));
+    private void removeAllInvalidChars(List<String> resultList) {
+        for (int i = 0; i < resultList.size(); i++) {
+            if (resultList.get(i).matches("\\w+\\*?\\[+\\d+\\]+")) {
+                resultList.set(i, resultList.get(i).replaceAll("\\*?\\[+\\d+\\]+", ""));
             }
         }
-        Collections.replaceAll(smallList, ".", "");
+        Collections.replaceAll(resultList, ".", "");
     }
 
     private Currency fillCurrencyFromResultList(List<String> smallList) {
