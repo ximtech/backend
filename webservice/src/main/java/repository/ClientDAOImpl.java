@@ -9,6 +9,7 @@ import errors.LogEntryNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import repository.entities.Log;
+import repository.interfaces.ClientDAO;
 
 @Repository
 @Transactional

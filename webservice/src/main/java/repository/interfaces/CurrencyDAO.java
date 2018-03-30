@@ -1,4 +1,4 @@
-package repository;
+package repository.interfaces;
 
 import org.springframework.stereotype.Component;
 import repository.entities.Currency;

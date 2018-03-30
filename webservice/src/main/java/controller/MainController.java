@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import services.ClientService;
-import services.CurrencyService;
+import services.interfaces.ClientService;
+import services.interfaces.CurrencyService;
 
 @Component
 @RestController(value = "number")

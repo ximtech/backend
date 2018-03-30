@@ -10,8 +10,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import repository.CurrencyDAO;
+import repository.interfaces.CurrencyDAO;
 import repository.entities.Currency;
+import services.interfaces.WikiPageService;
 
 @Component
 public class WikiPageServiceImpl implements WikiPageService {

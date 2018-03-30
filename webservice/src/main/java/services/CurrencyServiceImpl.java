@@ -3,18 +3,16 @@ package services;
 import static constants.Constants.SUCCESS;
 import static constants.Constants.WIKI_PAGE_URL;
 
-import java.util.Date;
-
 import dto.CurrencyRequest;
 import dto.CurrencyResponse;
 import errors.ValidationException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ClientDAO;
-import repository.CurrencyDAO;
+import repository.interfaces.CurrencyDAO;
 import repository.entities.Currency;
-import repository.entities.Log;
+import services.interfaces.CurrencyService;
+import services.interfaces.WikiPageService;
 
 @Service
 public class CurrencyServiceImpl implements CurrencyService {

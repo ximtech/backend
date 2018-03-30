@@ -2,7 +2,7 @@ package repository;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import repository.entities.Currency;
+import repository.interfaces.CurrencyDAO;
 import springbootweb.rest.RestApplication;
 
 public class Tester {

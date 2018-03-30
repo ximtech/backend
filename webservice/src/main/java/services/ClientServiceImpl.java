@@ -9,8 +9,9 @@ import dto.CurrencyResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ClientDAO;
+import repository.interfaces.ClientDAO;
 import repository.entities.Log;
+import services.interfaces.ClientService;
 
 @Service
 public class ClientServiceImpl implements ClientService {

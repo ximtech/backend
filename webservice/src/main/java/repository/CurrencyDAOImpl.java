@@ -7,6 +7,7 @@ import errors.CurrencyNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import repository.entities.Currency;
+import repository.interfaces.CurrencyDAO;
 
 @Repository
 @Transactional

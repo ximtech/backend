@@ -8,8 +8,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import services.ClientService;
-import services.CurrencyService;
+import services.interfaces.ClientService;
+import services.interfaces.CurrencyService;
 
 @SpringBootApplication
 @Configuration
