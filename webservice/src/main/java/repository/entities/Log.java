@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "ExtLog")
 public class Log implements Serializable {
@@ -26,17 +28,21 @@ public class Log implements Serializable {
     @Column(name = "Code")
     private String currencyCode;
 
-    @NotNull
-    @Column(name = "RequestDateTime")
+    @Column(name = "RequestDate")
     @Temporal(TemporalType.DATE)
-    private Date requestDateTime;
+    private Date requestDate;
+
+    @Column(name = "RequestTime")
+    @Temporal(TemporalType.TIME)
+    private Date requestTime;
 
     @NotNull
     @Column(name = "IP")
     private String clientIP;
 
+    @NotBlank
     @Column(name = "ErrorDescription")
-    private String errorrDescription;
+    private String errorDescription;
 
     public Long getId() {
         return id;
@@ -52,11 +58,18 @@ public class Log implements Serializable {
         this.currencyCode = currencyCode;
     }
 
-    public Date getRequestDateTime() {
-        return requestDateTime;
+    public Date getRequestDate() {
+        return requestDate;
     }
-    public void setRequestDateTime(Date requestDateTime) {
-        this.requestDateTime = requestDateTime;
+    public void setRequestDate(Date requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public Date getRequestTime() {
+        return requestTime;
+    }
+    public void setRequestTime(Date requestTime) {
+        this.requestTime = requestTime;
     }
 
     public String getClientIP() {
@@ -66,11 +79,11 @@ public class Log implements Serializable {
         this.clientIP = clientIP;
     }
 
-    public String getErrorrDescription() {
-        return errorrDescription;
+    public String getErrorDescription() {
+        return errorDescription;
     }
-    public void setErrorrDescription(String errorrDescription) {
-        this.errorrDescription = errorrDescription;
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
     }
 
     @Override
@@ -81,12 +94,14 @@ public class Log implements Serializable {
         builder.append(id);
         builder.append(",  currencyCode = ");
         builder.append(currencyCode);
-        builder.append(",  requestDateTime = ");
-        builder.append(requestDateTime);
+        builder.append(",  requestDate = ");
+        builder.append(requestDate);
+        builder.append(",  requestTime = ");
+        builder.append(requestTime);
         builder.append(",  clientIP = ");
         builder.append(clientIP);
-        builder.append(",  errorrDescription = ");
-        builder.append(errorrDescription);
+        builder.append(",  errorDescription = ");
+        builder.append(errorDescription);
         builder.append(']');
         builder.append(super.toString());
         return builder.toString();

@@ -29,9 +29,10 @@ public class ClientServiceImpl implements ClientService {
     public void persistClientData(CurrencyResponse response) {
         Log log = new Log();
         log.setCurrencyCode(response.getCurrencyCode());
-        log.setRequestDateTime(new Date());
+        log.setRequestDate(new Date());
+        log.setRequestTime(new Date());
         log.setClientIP(response.getClientIP());
-        log.setErrorrDescription(response.getErrorMessage());
+        log.setErrorDescription(response.getErrorMessage());
 
         try {
             clientDAO.save(log);
@@ -49,14 +50,16 @@ public class ClientServiceImpl implements ClientService {
 
     private List<List<String>> convertLogList(List<Log> logList) {
         List<List<String>> result = new ArrayList<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
         for (Log log : logList) {
             List<String> list = new ArrayList<>();
             list.add(log.getCurrencyCode());
             list.add(log.getClientIP());
-            list.add(log.getErrorrDescription());
-            list.add(dateFormat.format(log.getRequestDateTime()));
+            list.add(log.getErrorDescription());
+            list.add(dateFormat.format(log.getRequestDate()));
+            list.add(timeFormat.format(log.getRequestTime()));
             result.add(list);
         }
         return result;
