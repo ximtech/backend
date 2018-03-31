@@ -27,6 +27,5 @@ public class RestApplication {
        currencyService.performCleanUp();
        clientService.performCleanUp();
        currencyService.getDataFromWikiPage();
-
     }
 }

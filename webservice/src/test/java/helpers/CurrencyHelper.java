@@ -13,7 +13,8 @@ public class CurrencyHelper {
     private static final String CORRECT_CURRENCY_CODE_2 = "rub";
     private static final String CORRECT_CURRENCY_CODE_3 = "UsD";
 
-    private static Currency testCurrency;
+    public static final String TEST_CURRENCY_CODE_1 = "TST";
+    public static final String TEST_CURRENCY_CODE_2 = "TXT";
 
     private static final String[] WRONG_REQUESTS;
     private static final String[] CORRECT_REQUESTS;
@@ -22,14 +23,6 @@ public class CurrencyHelper {
         WRONG_REQUESTS = new String[] { WRONG_CURRENCY_CODE_1, WRONG_CURRENCY_CODE_2, WRONG_CURRENCY_CODE_3,
                         WRONG_CURRENCY_CODE_4 };
         CORRECT_REQUESTS = new String[] { CORRECT_CURRENCY_CODE_1, CORRECT_CURRENCY_CODE_2, CORRECT_CURRENCY_CODE_3 };
-    }
-
-    static {
-        testCurrency = new Currency();
-        testCurrency.setCode(CORRECT_CURRENCY_CODE_1);
-        testCurrency.setNum("123");
-        testCurrency.setE("0");
-        testCurrency.setCurrency("Test currency");
     }
 
     public static Object[] getWrongRequests() {
@@ -41,7 +34,7 @@ public class CurrencyHelper {
     }
 
     public static Currency getTestCurrency() {
-        return testCurrency;
+        return (createNewCurrency());
     }
 
     private static Object[] getRequests(final String[] requestArray) {
@@ -52,5 +45,14 @@ public class CurrencyHelper {
             result[i] = wrongRequest;
         }
         return result;
+    }
+
+    private static Currency createNewCurrency() {
+        Currency testCurrency = new Currency();
+        testCurrency.setCode(TEST_CURRENCY_CODE_1);
+        testCurrency.setNum("123");
+        testCurrency.setE("0");
+        testCurrency.setCurrency("Test currency");
+        return testCurrency;
     }
 }
