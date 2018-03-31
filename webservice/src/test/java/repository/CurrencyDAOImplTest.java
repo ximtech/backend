@@ -1,5 +1,6 @@
 package repository;
 
+import static helpers.CurrencyHelper.*;
 import static org.junit.Assert.*;
 
 import errors.CurrencyNotFoundException;
@@ -29,29 +30,29 @@ public class CurrencyDAOImplTest {
 
     @Before
     public void setUp() throws Exception {
-        currencyDAO.save(CurrencyHelper.getTestCurrency());
+        currencyDAO.save(getTestCurrency());
     }
 
     @Test
     public void update() throws Exception {
-        Currency currency = findCurrency(CurrencyHelper.TEST_CURRENCY_CODE_1);
-        currency.setCode(CurrencyHelper.TEST_CURRENCY_CODE_2);
+        Currency currency = findCurrency(TEST_CURRENCY_CODE_1);
+        currency.setCode(TEST_CURRENCY_CODE_2);
         currencyDAO.update(currency);
-        currency = findCurrency(CurrencyHelper.TEST_CURRENCY_CODE_2);
-        validateCurrency(currency, CurrencyHelper.TEST_CURRENCY_CODE_2);
+        currency = findCurrency(TEST_CURRENCY_CODE_2);
+        validateCurrency(currency, TEST_CURRENCY_CODE_2);
     }
 
     @Test
     public void findByCode() throws Exception {
-        Currency currency = findCurrency(CurrencyHelper.TEST_CURRENCY_CODE_1);
-        validateCurrency(currency, CurrencyHelper.TEST_CURRENCY_CODE_1);
+        Currency currency = findCurrency(TEST_CURRENCY_CODE_1);
+        validateCurrency(currency, TEST_CURRENCY_CODE_1);
     }
 
     @Test(expected = CurrencyNotFoundException.class)
     public void delete() throws Exception {
-        Currency currency = findCurrency(CurrencyHelper.TEST_CURRENCY_CODE_1);
+        Currency currency = findCurrency(TEST_CURRENCY_CODE_1);
         currencyDAO.delete(currency);
-        currencyDAO.findByCode(CurrencyHelper.TEST_CURRENCY_CODE_1);
+        currencyDAO.findByCode(TEST_CURRENCY_CODE_1);
     }
 
     private Currency findCurrency(String code) {

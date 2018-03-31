@@ -11,7 +11,7 @@ import repository.entities.Log;
 
 public class ClientHelper {
 
-    private static final String TEST_CURRENCY_CODE = "Test Code";
+    public static final String TEST_CURRENCY_CODE = "TEST";
     private static final String TEST_IP = "Test IP";
 
     public static CurrencyResponse getCurrencyResponse() {
@@ -20,6 +20,14 @@ public class ClientHelper {
         response.setClientIP(TEST_IP);
         response.setErrorMessage(SUCCESS);
         return response;
+    }
+
+    public static Log getTestLog() {
+        Log log = new Log();
+        log.setCurrencyCode(TEST_CURRENCY_CODE);
+        log.setClientIP(TEST_IP);
+        log.setErrorDescription(SUCCESS);
+        return log;
     }
 
     public static List<Log> getLogList() {

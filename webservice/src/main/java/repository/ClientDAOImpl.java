@@ -43,10 +43,10 @@ public class ClientDAOImpl implements ClientDAO {
     public Log findByCode(String code) {
         Log log;
         try {
-            log = (Log) entityManager.createQuery("SELECT l FROM Log l WHERE l.code LIKE ?")
-                            .setParameter(1, code).getSingleResult();
+            log = (Log) entityManager.createQuery("SELECT l FROM Log l WHERE l.currencyCode LIKE ?")
+                            .setParameter(1, code.toUpperCase()).getSingleResult();
         } catch (Exception e) {
-            throw new LogEntryNotFoundException("Client information with code: " + code + " wasn't exist");
+            throw new LogEntryNotFoundException("Client information with code: " + code + " wasn't exist", e);
         }
         return log;
     }
