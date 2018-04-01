@@ -1,6 +1,6 @@
 package repository;
 
-import static helpers.ClientHelper.TEST_CURRENCY_CODE;
+import static helpers.CurrencyHelper.TEST_CURRENCY_CODE_1;
 import static helpers.CurrencyHelper.TEST_CURRENCY_CODE_2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,7 +40,7 @@ public class ClientDAOImplTest {
 
     @Test
     public void update() throws Exception {
-        Log log = findLog(TEST_CURRENCY_CODE);
+        Log log = findLog(TEST_CURRENCY_CODE_1);
         log.setCurrencyCode(TEST_CURRENCY_CODE_2);
         clientDAO.update(log);
         log = clientDAO.findByCode(TEST_CURRENCY_CODE_2);
@@ -49,8 +49,8 @@ public class ClientDAOImplTest {
 
     @Test
     public void findByCode() throws Exception {
-        Log log = findLog(TEST_CURRENCY_CODE);
-        validateLog(log, TEST_CURRENCY_CODE);
+        Log log = findLog(TEST_CURRENCY_CODE_1);
+        validateLog(log, TEST_CURRENCY_CODE_1);
     }
 
     @Test
@@ -61,9 +61,9 @@ public class ClientDAOImplTest {
 
     @Test(expected = LogEntryNotFoundException.class)
     public void delete() throws Exception {
-        Log log = findLog(TEST_CURRENCY_CODE);
+        Log log = findLog(TEST_CURRENCY_CODE_1);
         clientDAO.delete(log);
-        clientDAO.findByCode(TEST_CURRENCY_CODE);
+        clientDAO.findByCode(TEST_CURRENCY_CODE_1);
     }
 
     private Log findLog(String code) {

@@ -54,7 +54,7 @@ public class CurrencyServiceImplTest {
     @Parameters(method = "getIncorrectRequests")
     public void getCurrencyDataByCodeTest1(Object request) throws Exception {
         CurrencyResponse response = currencyService.getCurrencyDataByCode((CurrencyRequest) request);
-        assertNotNull("Error message can't be empty", response.getErrorMessage());
+        assertNotEquals("Error message can't be successful", response.getErrorMessage().equals(SUCCESS));
     }
 
     @Test
