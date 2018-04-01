@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.sql.rowset.serial.SerialArray;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,10 +23,12 @@ public class Currency implements Serializable {
     private Long id;
 
     @NotBlank
+    @Pattern(regexp = "^[A-Z]{3}$")
     @Column(name = "Code")
     private String code;
 
     @NotBlank
+    @Pattern(regexp = "^\\d{3}$")
     @Column(name = "Num")
     private String num;
 

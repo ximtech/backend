@@ -41,8 +41,12 @@ public class WikiPageServiceImpl implements WikiPageService {
 
     private void removeAllInvalidChars(List<String> resultList) {
         for (int i = 0; i < resultList.size(); i++) {
-            if (resultList.get(i).matches("\\w+\\*?\\[+\\d+\\]+")) {
-                resultList.set(i, resultList.get(i).replaceAll("\\*?\\[+\\d+\\]+", ""));
+            String currencyField = resultList.get(i);
+            if (currencyField.matches("\\w+\\*?\\[+\\d+\\]+")) {
+                resultList.set(i, currencyField.replaceAll("\\*?\\[+\\d+\\]+", ""));
+            }
+            if (currencyField.matches("^.+\\[\\d\\]$")) {
+                resultList.set(i, currencyField.replaceAll("\\[\\d{1,2}\\]", ""));
             }
         }
         Collections.replaceAll(resultList, ".", "");

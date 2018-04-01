@@ -9,8 +9,8 @@ import errors.ValidationException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.interfaces.CurrencyDAO;
 import repository.entities.Currency;
+import repository.interfaces.CurrencyDAO;
 import services.interfaces.CurrencyService;
 import services.interfaces.WikiPageService;
 
@@ -33,7 +33,7 @@ public class CurrencyServiceImpl implements CurrencyService {
         try {
             pageParser.parseCurrencyDataFromWikiPage(WIKI_PAGE_URL);
         } catch (Exception e) {
-            LOGGER.error("Exception trying to get currency data from wikipedia page " + e.getMessage());
+            LOGGER.error("Exception trying to get currency data from wikipedia page " + e.getMessage(), e);
         }
         LOGGER.info("All data has been successfully persisted");
     }

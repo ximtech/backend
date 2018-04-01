@@ -56,6 +56,6 @@ public class CurrencyDAOImpl implements CurrencyDAO {
 
     @Override
     public void clear() {
-        entityManager.createNativeQuery("TRUNCATE TABLE EXTCURRENCY ").executeUpdate();
+        entityManager.createNativeQuery("TRUNCATE TABLE EXTCURRENCY").executeUpdate();
     }
 }
