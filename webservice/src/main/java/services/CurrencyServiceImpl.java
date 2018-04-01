@@ -1,5 +1,6 @@
 package services;
 
+import static constants.Constants.NO_VALUE;
 import static constants.Constants.SUCCESS;
 import static constants.Constants.WIKI_PAGE_URL;
 
@@ -53,6 +54,7 @@ public class CurrencyServiceImpl implements CurrencyService {
                 LOGGER.info("Exception trying to get currency " + e.getMessage());
                 response.setCurrencyCode(request.getCurrencyCode());
                 response.setErrorMessage(e.getMessage());
+                setEmptyValuesToResponse(response);
             }
 
         return response;
@@ -73,6 +75,12 @@ public class CurrencyServiceImpl implements CurrencyService {
         response.setCurrencyE(currency.getE());
         response.setCurrencyFullName(currency.getCurrency());
         response.setErrorMessage(SUCCESS);
+    }
+
+    private void setEmptyValuesToResponse(CurrencyResponse response) {
+        response.setCurrencyNum(NO_VALUE);
+        response.setCurrencyE(NO_VALUE);
+        response.setCurrencyFullName(NO_VALUE);
     }
 
     @Autowired
